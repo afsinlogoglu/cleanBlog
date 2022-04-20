@@ -1,0 +1,32 @@
+{
+  "name": "cleanblog",
+  "version": "1.0.0",
+  "description": "Blog Demo",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afsinlogoglu/cleanBlog.git"
+  },
+  "keywords": [
+    "blog",
+    "demo",
+    "entrylevel"
+  ],
+  "author": "Afsin Logoglu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/afsinlogoglu/cleanBlog/issues"
+  },
+  "homepage": "https://github.com/afsinlogoglu/cleanBlog#readme",
+  "devDependencies": {
+    "prettier": "2.6.2"
+  },
+  "dependencies": {
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15"
+  }
+}
