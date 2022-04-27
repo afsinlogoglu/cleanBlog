@@ -5,6 +5,12 @@ const ejs = require("ejs");
 const Post = require('./models/Post');
 
 const app = express();
+//controllers
+
+const postController = require('./controllers/postController')
+
+const pageController = require('./controllers/pageController');
+
 
 //db connection
 mongoose.connect('mongodb://localhost/cleanblog-test-db', {
@@ -29,33 +35,11 @@ app.listen(port, () => {
 
 
 //routes
-app.get('/', async(req, res) => {
-  const posts = await Post.find({})
-  res.render('index',{
-    posts
-  });
-});
+app.get('/', postController.getAllPosts);
+app.get("/posts/:id", postController.getPost);
+app.get("/about", pageController.getAboutPage);
+app.get("/addPost", pageController.getAddPage);
+app.post('/posts', postController.createPost);
+app.put('/post/:id', postController.updatePost);
+app.delete('/posts/:id', postController.deletePost);
 
-app.get("/posts/:id", async (req, res) => {
-  const post = await Post.findById(req.params.id)
-  res.render('post',{
-    post
-  })
-});
-
-app.get("/about", (req, res) => {
-  res.render("about");
-});
-
-app.get("/post", (req, res) => {
-  res.render("post");
-});
-
-app.get("/addPost", (req, res) => {
-  res.render("add_post");
-});
-
-app.post('/posts', async(req, res) => {
-  await Post.create(req.body);
-  res.redirect('/');
-});
